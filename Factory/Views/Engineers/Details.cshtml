@@ -1,0 +1,37 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Engineer
+
+<h1>Engineer Details</h1>
+<hr/>
+
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+<h3>@Html.DisplayNameFor(model => model.Salary): @Html.DisplayFor(model => model.Salary)</h3>
+<h3>Date Of Hire: @Html.DisplayFor(model => model.DateOfHire)</h3>
+
+@if(@Model.Machines.Count == 0)
+{
+  <p>This Engineer does not have permission to work on any machine</p>
+}
+else
+{
+  <h2>Machine Permissions:</h2>
+  <ul>
+    @foreach(var join in Model.Machines)
+    {
+      <li>@join.Machine.Name</li>
+      @using (Html.BeginForm("DeleteMachine", "Engineers"))
+      {
+        @Html.Hidden("joinId", @join.EngineerMachineId)
+        <input type="submit" value="Delete"/>
+      }
+    }
+  </ul>
+}
+
+
+<button>@Html.ActionLink("Home", "Index", "Home")</button>
+<button>@Html.ActionLink("Jump To Engineers", "Index", "Engineers")</button>
+<button>@Html.ActionLink("Jump To Machines", "Index", "Machines")</button>

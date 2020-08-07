@@ -16,5 +16,6 @@ namespace Factory.Models
     public String Description { get; set; }
     public DateTime DateOfLastRepair { get; set; }
     public DateTime NextInspection { get; set; }
+    public ICollection<EngineerMachine> Engineers { get; set; }
   }
 }

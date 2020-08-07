@@ -19,6 +19,8 @@
 @if(@Model.Machines.Count == 0)
 {
   <p>This Engineer does not have permission to work on any machine</p>
+  <p>Would you like to add a machine permission?</p>
+  <button>@Html.ActionLink("Add Machine Permissions", "AddMachine", new { id = Model.EngineerId })</button>
 }
 else
 {
@@ -34,6 +36,7 @@ else
       }
     }
   </ul>
+  <button>@Html.ActionLink("Add Machine Permissions", "AddMachine", new { id = Model.EngineerId })</button>
 }
 
 

@@ -4,11 +4,14 @@
 
 @model Factory.Models.Engineer
 
-<h1>Edit: Engineer: @Html.DisplayFor(model => model.Name)</h1>
+<h1>Edit Engineer: @Html.DisplayFor(model => model.Name)</h1>
 <hr/>
+<button>@Html.ActionLink("Add Machine Permissions", "AddMachine", new { id = Model.EngineerId })</button>
 
 @using (Html.BeginForm())
 {
+  @Html.HiddenFor(model => model.EngineerId)
+
   @Html.Label("FirstName", "First Name")<br>
   @Html.EditorFor(model => model.FirstName)<br>
 

@@ -1,0 +1,20 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Engineer
+
+<h2>Are you sure you want to delete this Engineer?</h2>
+
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+<h3>@Html.DisplayNameFor(model => model.Salary): @Html.DisplayFor(model => model.Salary)</h3>
+<h3>Date Of Hire: @Html.DisplayFor(model => model.DateOfHire)</h3>
+
+@using (Html.BeginForm())
+{
+    <input type="submit" value="Delete" />
+}
+
+<button>@Html.ActionLink("Home", "Index", "Home")</button>
+<button>@Html.ActionLink("Jump To Engineers", "Index", "Engineers")</button>
+<button>@Html.ActionLink("Jump To Machines", "Index", "Machines")</button>

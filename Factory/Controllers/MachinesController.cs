@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace Factory.Controllers
 {
-  public class MachinesController : Controllers
+  public class MachinesController : Controller
   {
     private readonly FactoryContext _db;
 

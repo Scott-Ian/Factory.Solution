@@ -1,0 +1,32 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Machine
+
+<h1>Add a new Machine:</h1>
+<hr/>
+
+@using (Html.BeginForm())
+{
+  @Html.Label("Name", "Name")<br>
+  @Html.TextBoxFor(model => model.Name)<br>
+
+  @Html.Label("Status", "Status")<br>
+  @Html.TextBoxFor(model => model.Status)<br>
+
+  @Html.Label("Description", "Description")<br>
+  @Html.TextBoxFor(model => model.Description)<br>
+
+  @Html.Label("DateOfLastRepair", "Date Of Last Repair")<br>
+  @Html.TextBoxFor(model => model.DateOfLastRepair, new { @type = "date"} )<br>
+
+  @Html.Label("NextInspection", "Date Of Next Inspection")<br>
+  @Html.TextBoxFor(model => model.NextInspection, new { @type = "date"} )<br>
+
+  <input type="submit" value="Add New Machine" /><br>
+}
+
+<button>@Html.ActionLink("Home", "Index", "Home")</button>
+<button>@Html.ActionLink("Jump To Engineers", "Index", "Engineers")</button>
+<button>@Html.ActionLink("Jump To Machines", "Index", "Machines")</button>

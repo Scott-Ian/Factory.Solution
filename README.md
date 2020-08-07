@@ -1,10 +1,10 @@
-# <h1 align = "center"> Registrar
+# <h1 align = "center"> Factory
 
 ## <h3 align = "center"> Entity Framework in ASP.NET MVC, 8.4.20
 
 ## <h2 align = "center"> About
 
-<p align = "center"> This is an application for a hair salon. It allows the user to add stylists and their associated clients.
+<p align = "center"> This application manages the relationship between engineers and machines; documenting the ability to repair or to be repaired by. 
 
 ## **✅REQUIREMENTS**
 * Install [Git v2.62.2+](https://git-scm.com/downloads/)
@@ -23,7 +23,6 @@
   1. dotnet run
 * Open http://localhost:5000 in your web browser to access the application
 
-
 __
 
 ## User Stories
@@ -40,21 +39,23 @@ __
 
 * I should be able to navigate to a splash page that lists all engineers and machines. Users should be able to click on an individual engineer or machine to see all the engineers/machines that belong to it.
 
-
-
 ## Known Bugs
 
-_No known bugs_
+_There are currently no known bugs_
 
 ## Support and contact details
 
-Contact : Megan Hepner
+Contact : Ian Scott
 
 ## Technologies Used
 
 * C#
 * ASP.NET MVC
-* Entity
+* Entity Framework
+* SQL Database
+* Many-to-Many database relationships with join tables
+* HTML
+* CSS
 
 
 ## **📘 License**

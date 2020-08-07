@@ -1,0 +1,48 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Machine
+
+<h1>Machine Details</h1>
+<hr/>
+
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+<h3>@Html.DisplayNameFor(model => model.Status): @Html.DisplayFor(model => model.Status)</h3>
+<h3>@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)</h3>
+
+<h3>Date Of Last Repair: @Html.DisplayFor(model => model.DateOfLastRepair)</h3>
+<h3>Date Of Next Inspection: @Html.DisplayFor(model => model.NextInspection)</h3>
+
+<hr/>
+
+<button class="btn bton-alert">@Html.ActionLink("Delete Machine", "Delete", new { id = Model.MachineId })</button>
+<button class ="btn btin-info">@Html.ActionLink("Edit Machine", "Edit", new { id = Model.MachineId })</button>
+
+@if(@Model.Engineers.Count == 0)
+{
+  <p>This Machine does not have any approved Engineers</p>
+  <p>Would you like to add an approved Engineer?</p>
+  <button>@Html.ActionLink("Add Engineer Permissions", "AddEngineer", new { id = Model.MachineId })</button>
+}
+else
+{
+  <h2>Machine Permissions:</h2>
+  <ul>
+    @foreach(var join in Model.Engineers)
+    {
+      <li>@join.Engineer.Name</li>
+      @using (Html.BeginForm("DeleteEngineer", "Machines"))
+      {
+        @Html.Hidden("joinId", @join.EngineerMachineId)
+        <input type="submit" value="Delete"/>
+      }
+    }
+  </ul>
+  <button>@Html.ActionLink("Add Engineer Permissions", "AddEngineer", new { id = Model.MachineId })</button>
+}
+
+
+<button>@Html.ActionLink("Home", "Index", "Home")</button>
+<button>@Html.ActionLink("Jump To Engineers", "Index", "Engineers")</button>
+<button>@Html.ActionLink("Jump To Machines", "Index", "Machines")</button>

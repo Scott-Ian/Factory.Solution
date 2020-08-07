@@ -1,0 +1,24 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Machine
+
+<h1>Are you sure you want to delete this Machine?</h1>
+
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+<h3>@Html.DisplayNameFor(model => model.Status): @Html.DisplayFor(model => model.Status)</h3>
+<h3>@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)</h3>
+
+<h3>Date Of Last Repair: @Html.DisplayFor(model => model.DateOfLastRepair)</h3>
+<h3>Date Of Next Inspection: @Html.DisplayFor(model => model.NextInspection)</h3>
+<hr/>
+
+@using (Html.BeginForm())
+{
+    <input type="submit" value="Delete" />
+}
+
+<button>@Html.ActionLink("Home", "Index", "Home")</button>
+<button>@Html.ActionLink("Jump To Engineers", "Index", "Engineers")</button>
+<button>@Html.ActionLink("Jump To Machines", "Index", "Machines")</button>

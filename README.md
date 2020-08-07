@@ -28,20 +28,15 @@ __
 ## User Stories
 
 * As the factory manager, I need to be able to see a list of all engineers, and I need to be able to see a list of all machines. 
-
 * As the factory manager, I need to be able to select a engineer, see their details, and see a list of all machines that engineer is licensed to repair. I also need to be able to select a machine, see its details, and see a list of all engineers licensed to repair it.
-
 * As the factory manager, I need to add new engineers to our system when they are hired. I also need to add new machines to our system when they are installed.
-
 * As the factory manager, I should be able to add new machines even if no engineers are employed. I should also be able to add new engineers even if no machines are installed.
-
 * As the factory manager, I need to be able to add or remove machines that a specific engineer is licensed to repair. I also need to be able to modify this relationship from the other side, and add or remove engineers from a specific machine.
-
 * I should be able to navigate to a splash page that lists all engineers and machines. Users should be able to click on an individual engineer or machine to see all the engineers/machines that belong to it.
 
 ## Known Bugs
 
-_There are currently no known bugs_
+_There is an erroneous right carrot (>) in my Engineers table that I have not been able to track down and remove. Otherwise, all CRUD functionality is in place, and I believe there to be no errors!_
 
 ## Support and contact details
 

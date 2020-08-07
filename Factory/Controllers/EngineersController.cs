@@ -16,12 +16,12 @@ namespace Factory.Controllers
       _db = db;
     }
 
-    public Actionresult Index(string sortOrder, string searchString)
+    public ActionResult Index(string sortOrder, string searchString)
     {
       ViewBag.LastNameSortParam = string.IsNullOrEmpty(sortOrder) ?"last_desc" : "";
       ViewBag.FirstNameSortParam = sortOrder == "FirstName" ? "first_desc" : "FirstName";
       ViewBag.SalarySortParam = sortOrder == "Salary" ? "salary_desc" : "Salary";
-      Viewbag.DateSortParam = sortOrder == "Date" ? "date_desc" : "Date";
+      ViewBag.DateSortParam = sortOrder == "Date" ? "date_desc" : "Date";
 
       IQueryable<Engineer> engineers = _db.Engineers
         .Include(engineer => engineer.Machines)
@@ -78,15 +78,15 @@ namespace Factory.Controllers
     public ActionResult Details(int id)
     {
       var engineer = _db.Engineers
-        .Include(engineer => engineer.Machines)
+        .Include(e => e.Machines)
         .ThenInclude(join => join.Machine)
-        .FirstOrDefault(engineer => engineer.EngineerId == id);
+        .FirstOrDefault(e => e.EngineerId == id);
       return View(engineer);
     }
 
     public ActionResult Edit (int id)
     {
-      var engineer = _db.Engineers.FirstOrDefault(engineer => engineer.EngineerId == id);
+      var engineer = _db.Engineers.FirstOrDefault(e => e.EngineerId == id);
       ViewBag.Machines = new SelectList(_db.Machines, "MachineId", "Name");
       return View(engineer);
     }
@@ -105,31 +105,32 @@ namespace Factory.Controllers
 
     public ActionResult Delete(int id)
     {
-      var engineer = _db.Engineers.FirstOrDefault(engineer => engineer.EngineerId == id);
+      var engineer = _db.Engineers.FirstOrDefault(e => e.EngineerId == id);
       return View(engineer);
     }
 
     [HttpPost, ActionName("Delete")]
     public ActionResult DeleteConfirmed (int id)
     {
-      var engineer = _db.Engineers.FirstOrDefault(engineer => engineer.EngineerId == id);
-      _db.Engineers.Remote(engineer);
+      var engineer = _db.Engineers.FirstOrDefault(e => e.EngineerId == id);
+      _db.Engineers.Remove(engineer);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
 
     [HttpPost]
-    public ACtionResult DeleteMachine(int joinid)
+    public ActionResult DeleteMachine(int joinId)
     {
-      var joinEntry = _db.EngineerMachine.FirstOrDefault(joinEntry => joinEntry.EngineerMachineId == joinId);
-      _db.CourseStudent.Remove(joinEntry);
+      var joinEntry = _db.EngineerMachine.FirstOrDefault(entry => entry.EngineerMachineId == joinId);
+      _db.EngineerMachine.Remove(joinEntry);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
 
     public ActionResult AddMachine (int id)
     {
-      var engineer = _db.Engineer.FirstOrDefault(engineer => engineer.EngineerId == id);     ViewBag.Machines = new SelectList(_db.Machines, "MachineId", "Name");
+      var engineer = _db.Engineers.FirstOrDefault(e => e.EngineerId == id);
+      ViewBag.Machines = new SelectList(_db.Machines, "MachineId", "Name");
       return View(engineer);
     }
 
@@ -138,7 +139,7 @@ namespace Factory.Controllers
     {
       if (EngineerId != 0)
       {
-        _db.EngineerMachine.Add(new EngineerMachine() { EngineerId = MachineId, EngineerId = engineer.EngineerId } );
+        _db.EngineerMachine.Add(new EngineerMachine() { EngineerId = EngineerId, MachineId = machine.MachineId } );
       }
       _db.SaveChanges();
       return RedirectToAction("Index");

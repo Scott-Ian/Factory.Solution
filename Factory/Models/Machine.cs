@@ -3,9 +3,9 @@ using System;
 
 namespace Factory.Models
 {
-  public class Factory
+  public class Machine
   {
-    public Factory()
+    public Machine()
     {
       this.Engineers = new HashSet<EngineerMachine>();
     }

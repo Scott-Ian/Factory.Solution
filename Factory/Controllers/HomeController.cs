@@ -6,7 +6,7 @@ namespace Factory.Controllers
 {
   public class HomeController : Controller
   {
-    [httpGet("/")]
+    [HttpGet("/")]
     public ActionResult Index()
     {
       return View();

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace Factory.Models
@@ -6,7 +7,7 @@ namespace Factory.Models
   {
     public Engineer()
     {
-      this.Students = new HashSet<EngineerMachine>();
+      this.Machines = new HashSet<EngineerMachine>();
       this.Name = FirstName + "" + LastName;
     }
 

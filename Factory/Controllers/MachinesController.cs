@@ -127,5 +127,23 @@ namespace Factory.Controllers
       return RedirectToAction("Index");
     }
 
+    public ActionResult AddEngineer (int id)
+    {
+      var machine = _db.Machines.FirstOrDefault(machine => machine.MachineId == id);
+      ViewBag.Engineers = new SelectList(_db.Engineers, "EngineerId", "Name");
+      return View(machine);
+    }
+
+    [HttpPost]
+    public ActionResult AddEngineer (Engineer engineer, int MachineId)
+    {
+      if (MachineId != 0)
+      {
+        _db.EngineerMachine.Add(new EngineerMachine() { MachineId = MachineId, EngineerId = engineer.EngineerId } );
+      }
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
   }
 }

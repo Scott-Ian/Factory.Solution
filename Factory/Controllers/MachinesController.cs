@@ -61,5 +61,19 @@ namespace Factory.Controllers
       }
       return View(machines.ToList());
     }
+
+    public ActionResult Create()
+    {
+      return View();
+    }
+
+    [HttpPost]
+    public ActionResult Create(MachinesController machines)
+    {
+      _db.Machines.Add(Machine);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
   }
 }

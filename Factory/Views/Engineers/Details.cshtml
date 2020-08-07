@@ -11,6 +11,11 @@
 <h3>@Html.DisplayNameFor(model => model.Salary): @Html.DisplayFor(model => model.Salary)</h3>
 <h3>Date Of Hire: @Html.DisplayFor(model => model.DateOfHire)</h3>
 
+<hr/>
+
+<button class="btn bton-alert">@Html.ActionLink("Delete Engineer", "Delete", new { id = Model.EngineerId })</button>
+<button class ="btn btin-info">@Html.ActionLink("Edit Engineer", "Edit", new { id = Model.EngineerId })</button>
+
 @if(@Model.Machines.Count == 0)
 {
   <p>This Engineer does not have permission to work on any machine</p>

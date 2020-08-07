@@ -1,0 +1,29 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Engineer
+
+<h1>Add a new Engineer:</h1>
+<hr/>
+
+@using (Html.BeginForm())
+{
+  @Html.Label("FirstName", "First Name")<br>
+  @Html.TextBoxFor(model => model.FirstName)<br>
+
+  @Html.Label("LastName", "Last Name")<br>
+  @Html.TextBoxFor(model => model.LastName)<br>
+
+  @Html.Label("Salary", "Salary")<br>
+  @Html.TextBoxFor(model => model.Salary, new { @type = "number"} )<br>
+
+  @Html.Label("DateOfHire", "Date Of Hire")<br>
+  @Html.TextBoxFor(model => model.DateOfHire, new { @type = "date"} )<br>
+
+  <input type="submit" value="Add New Engineer" /><br>
+}
+
+<button>@Html.ActionLink("Home", "Index", "Home")</button>
+<button>@Html.ActionLink("Jump To Engineers", "Index", "Engineers")</button>
+<button>@Html.ActionLink("Jump To Machines", "Index", "Machines")</button>

@@ -1,0 +1,62 @@
+@{
+  Layout = "_Layout";
+}
+
+@using Factory.Models;
+@model List<Factory.Models.Engineer>
+
+<h1>Engineers:</h1>
+<hr/>
+
+@if (@Model.Count == 0)
+{
+  <h5>There are no Engineers in the system</h5>
+}
+else
+{
+  @using (Html.BeginForm())
+  {
+    <p>Find By name: @Html.TextBox("SearchString")
+      <input type="submit" value="Search" /></p>
+  }
+  
+  <table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("Last Name", "Index", new { sortOrder = ViewBag.LastNameSortParam })
+        </th>
+        <th>
+          @Html.ActionLink("First Name", "Index", new { sortOrder = ViewBag.FirstNameSortParam })
+        </th>
+        <th>
+            @Html.ActionLink("Salary", "Index", new { sortOrder = ViewBag.SalarySortParam })
+        </th>
+        <th>
+            @Html.ActionLink("Date of Hire", "Index", new { sortOrder = ViewBag.DateSortParm })
+        </th>
+        <th></th>
+    </tr>
+    
+  @foreach (Engineer engineer in @Model)
+  {
+    <tr>
+      <td>
+        @Html.ActionLink($"{engineer.LastName}", "Details", new { id = engineer.EngineerId})
+      </td>
+      <td>
+        @engineer.FirstName
+      </td>
+      <td>
+        @engineer.Salary
+      </td>
+      <td>
+        @engineer.DateOfHire
+      </td>
+    </tr>
+  }
+  </table>
+}
+
+<button>@Html.ActionLink("Add a New Engineer", "Create")</button>
+<button>@Html.ActionLink("Jump To Machines", "Index", "Machines")</button>
+<button>@Html.ActionLink("Home", "Index", "Home")</button>

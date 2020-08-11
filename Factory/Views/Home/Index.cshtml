@@ -43,7 +43,7 @@ else
   {
     <tr>
       <td>
-        @Html.ActionLink($"{engineer.LastName}", "Details", new { id = engineer.EngineerId})
+        @Html.ActionLink($"{engineer.LastName}", "Details", "Engineers", new { id = engineer.EngineerId})
       </td>
       <td>
         @engineer.FirstName
@@ -77,7 +77,7 @@ else
   <table class="table">
     <tr>
         <th>
-            @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.MachineNameSortParam })
+            @Html.ActionLink("Name", "Index", "Machines", new { sortOrder = ViewBag.MachineNameSortParam })
         </th>
         <th>
           @Html.ActionLink("Status", "Index", new { sortOrder = ViewBag.MachineStatusSortParam })
@@ -120,4 +120,4 @@ else
 <button>@Html.ActionLink("Jump To Engineers", "Index", "Engineers")</button>
 <button>@Html.ActionLink("Jump To Machines", "Index", "Machines")</button>
 <button>@Html.ActionLink("Add a New Machine", "Create", "Machines")</button>
-<button>@Html.ActionLink("Add an New Engineer", "Create", "Engineer")</button>
+<button>@Html.ActionLink("Add an New Engineer", "Create", "Engineers")</button>
